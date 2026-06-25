@@ -26,16 +26,19 @@ export async function generateMetadata({
   const metadataBase = process.env.VERCEL_URL
     ? new URL(`https://${process.env.VERCEL_URL}`)
     : new URL("http://localhost:3000");
+
   return {
     metadataBase,
     title,
     description,
+    url: metadataBase.toString(),
     openGraph: {
       title,
       description,
       type: "website",
       siteName: "Test 101",
       locale: "en_US",
+      url: metadataBase.toString(),
     },
     twitter: {
       card: "summary_large_image",
