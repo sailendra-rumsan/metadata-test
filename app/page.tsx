@@ -1,4 +1,49 @@
+import { Metadata } from "next";
 import Image from "next/image";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[]>>;
+}): Promise<Metadata> {
+  const query = await searchParams;
+  let schoolName = query?.name as string | undefined;
+  if (schoolName) {
+    try {
+      schoolName = decodeURIComponent(schoolName.replace(/\+/g, " ")).trim();
+    } catch {
+      schoolName = schoolName.replace(/\+/g, " ").trim();
+    }
+  }
+
+  const title = schoolName
+    ? `Join ${schoolName}'s recycling program`
+    : "Join your community's recycling program";
+  const description = schoolName
+    ? `Help reduce plastic waste by bringing your used plastic to ${schoolName}. Sign up now and Plastic Bank will automatically prevent 50 plastic bottles from entering the environment.`
+    : `Help reduce plastic waste by bringing your used plastic to your school. Sign up now and Plastic Bank will automatically prevent 50 plastic bottles from entering the environment.`;
+
+  const metadataBase = process.env.NEXT_PUBLIC_BASE_URL;
+
+  return {
+    metadataBase: metadataBase!,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      siteName: "Test 101",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [],
+    },
+  };
+}
 
 export default function Home() {
   return (
