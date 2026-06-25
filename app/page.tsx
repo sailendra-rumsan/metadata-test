@@ -23,10 +23,10 @@ export async function generateMetadata({
     ? `Help reduce plastic waste by bringing your used plastic to ${schoolName}. Sign up now and Plastic Bank will automatically prevent 50 plastic bottles from entering the environment.`
     : `Help reduce plastic waste by bringing your used plastic to your school. Sign up now and Plastic Bank will automatically prevent 50 plastic bottles from entering the environment.`;
 
-  const metadataBase = process.env.NEXT_PUBLIC_BASE_URL;
+  // const metadataBase = process.env.NEXT_PUBLIC_BASE_URL;
 
   return {
-    metadataBase: metadataBase!,
+    // metadataBase: metadataBase!,
     title,
     description,
     openGraph: {
