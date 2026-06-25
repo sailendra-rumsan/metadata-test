@@ -31,7 +31,6 @@ export async function generateMetadata({
     metadataBase,
     title,
     description,
-    url: metadataBase.toString(),
     openGraph: {
       title,
       description,
