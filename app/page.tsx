@@ -24,9 +24,8 @@ export async function generateMetadata({
     : `Help reduce plastic waste by bringing your used plastic to your school. Sign up now and Plastic Bank will automatically prevent 50 plastic bottles from entering the environment.`;
 
   const metadataBase = process.env.VERCEL_URL
-    ? new URL(process.env.VERCEL_URL)
+    ? new URL(`https://${process.env.VERCEL_URL}`)
     : new URL("http://localhost:3000");
-
   return {
     metadataBase,
     title,
